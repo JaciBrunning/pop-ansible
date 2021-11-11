@@ -1,0 +1,13 @@
+---
+
+- name: Install NodeJS
+  include_role:
+    apply:
+      become: true
+    name: geerlingguy.nodejs
+
+- name: Install Yarn
+  become: true
+  community.general.npm:
+    name: yarn
+    global: true

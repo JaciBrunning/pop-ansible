@@ -1,0 +1,70 @@
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/jaci/bootstrap/assets/bg.jpg'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'au')]
+xkb-options=@as []
+
+[org/gnome/desktop/interface]
+gtk-im-module='gtk-im-context-simple'
+gtk-theme='Pop-dark'
+
+[org/gnome/desktop/notifications]
+application-children=['io-elementary-appcenter']
+show-banners=true
+
+[org/gnome/desktop/notifications/application/io-elementary-appcenter]
+application-id='io.elementary.appcenter.desktop'
+
+[org/gnome/desktop/privacy]
+report-technical-problems=false
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+lock-delay=uint32 0
+lock-enabled=false
+picture-options='zoom'
+picture-uri='file:///home/jaci/bootstrap/assets/bg.jpg'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/session]
+idle-delay=uint32 0
+
+[org/gnome/mutter]
+workspaces-only-on-primary=false
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+search-filter-time-type='last_modified'
+
+[org/gnome/nautilus/window-state]
+initial-size=(890, 550)
+maximized=false
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+screenshot=@as []
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='Print'
+command='/usr/bin/flatpak run org.flameshot.Flameshot gui'
+name='flameshot'
+
+[org/gnome/shell]
+favorite-apps=['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop', 'org.gnome.Terminal.desktop', 'com.discordapp.Discord.desktop', 'com.spotify.Client.desktop']
+
+[org/gnome/shell/extensions/dash-to-dock]
+click-action='cycle-windows'
+dash-max-icon-size=48
+dock-position='LEFT'
+manualhide=false
+multi-monitor=true
+
+[org/gnome/shell/extensions/pop-cosmic]
+overlay-key-action='LAUNCHER'

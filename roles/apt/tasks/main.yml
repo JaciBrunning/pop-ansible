@@ -1,0 +1,23 @@
+---
+
+- name: Install APT Packages
+  become: yes
+  apt:
+    pkg:
+    - neovim
+    - tmux
+    - tree
+    - zsh
+    - build-essential
+    - clang
+    - clang-tools
+    - neofetch
+    - bpytop
+    - htop
+    - git
+    - g++
+    - g++-multilib
+    - gdb
+    - gparted
+    - iperf3
+    - ssh

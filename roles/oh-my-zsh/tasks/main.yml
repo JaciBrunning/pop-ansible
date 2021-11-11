@@ -1,0 +1,26 @@
+---
+
+- name: Install APT Packages
+  become: yes
+  apt:
+    pkg:
+    - zsh
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+  register: omzsh
+
+- name: Copy ZSH Config
+  copy:
+    src: ./configs/.zshrc
+    dest: ~/.zshrc
+  when: omzsh.changed
+
+- name: Set user shell to zsh
+  become: true
+  user:
+    name: jaci
+    shell: /usr/bin/zsh
+  when: omzsh.changed

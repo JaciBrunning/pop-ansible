@@ -1,0 +1,39 @@
+---
+- name: Check for Chrome
+  command: dpkg-query -W google-chrome-stable
+  register: chrome_check
+  failed_when: chrome_check.rc > 1
+  changed_when: chrome_check.rc == 1
+
+- name: Install apt-transport-https
+  become: true
+  ansible.builtin.apt:
+    state: latest
+    update_cache: true
+  when: chrome_check.rc == 1
+- name: Add Google APT Signing Key
+  become: true
+  ansible.builtin.apt_key:
+    url: "https://dl.google.com/linux/linux_signing_key.pub"
+    state: present
+  when: chrome_check.rc == 1
+- name: Add Google Chrome APT Repository
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+    filename: google-chrome
+  when: chrome_check.rc == 1
+- name: Install google-chrome-stable
+  become: true
+  ansible.builtin.apt:
+    name: "google-chrome-stable"
+    state: latest
+    update_cache: true
+  when: chrome_check.rc == 1
+- name: Set Chrome as Default
+  include_role:
+    name: gantsign.default-web-browser
+  vars:
+    default_web_browser: google-chrome
+  when: chrome_check.rc == 1

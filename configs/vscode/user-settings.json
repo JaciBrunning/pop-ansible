@@ -1,0 +1,66 @@
+{
+    "window.titleBarStyle": "custom",
+    "editor.tabSize": 2,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.lineNumbers": "relative",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "explorer.autoReveal": false,
+    "editor.renderWhitespace": "all",
+    "git.autofetch": true,
+    "ros.distro": "melodic",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "zenMode.hideTabs": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.fullScreen": false,
+    "python.pythonPath": "python3",
+    "arduino.path": "/home/jaci/Apps/arduino/arduino-1.8.10",
+    "platformio-ide.activateOnlyOnPlatformIOProject": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "ruby.useBundler": true,
+    "ruby.useLanguageServer": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "git.confirmSync": false,
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix"
+    },
+    "githubIssues.ignoreCompletionTrigger": [
+        "python",
+        "makefile",
+        "ruby"
+    ],
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "spellright.language": [
+        "English (Australian)"
+    ],
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "python.defaultInterpreterPath": "python3",
+    "jupyter.experiments.optInto": [
+        "__NativeNotebookEditor__"
+    ],
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload", "%autoreload 2"
+    ],
+    "window.zoomLevel": 1
+    // "remote.containers.defaultExtensions": [
+    //     ""
+    // ]
+}

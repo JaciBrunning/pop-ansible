@@ -1,0 +1,16 @@
+---
+- name: Install VS Code
+  become: true
+  apt:
+    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+  register: vscode_check
+
+- name: Install VS Code Extensions
+  shell: cat ./configs/vscode/vscode-extensions.txt | xargs -n 1 code --install-extension
+  when: vscode_check.changed
+
+- name: Restore VS Code Config
+  copy:
+    src: ./configs/vscode/user-settings.json
+    dest: ~/.config/Code/User/settings.json
+  when: vscode_check.changed

@@ -1,0 +1,18 @@
+---
+
+- name: Install Jabba
+  shell: curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash && . ~/.jabba/jabba.sh
+  args:
+    creates: '~/.jabba/bin/jabba'
+  register: jabba
+
+- name: Install JDK 11
+  shell: ~/.jabba/bin/jabba install openjdk@1.17.0 && ~/.jabba/bin/jabba alias default openjdk@1.17.0
+  when: jabba.changed
+
+- name: Update JAVA_HOME
+  become: true
+  shell: |
+    sudo update-alternatives --install /usr/bin/java java /home/jaci/.jabba/jdk/default/bin/java 20000
+    sudo update-alternatives --install /usr/bin/javac javac /home/jaci/.jabba/jdk/default/bin/javac 20000
+  when: jabba.changed

@@ -1,0 +1,56 @@
+---
+- name: Check for Docker
+  command: dpkg-query -W docker-ce
+  register: docker_check
+  failed_when: docker_check.rc > 1
+  changed_when: docker_check.rc == 1
+
+- name: Install apt-transport-https
+  become: true
+  ansible.builtin.apt:
+    pkg:
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - apt-transport-https
+    state: latest
+    update_cache: true
+  when: docker_check.changed
+
+- name: Add Docker APT Signing Key
+  become: true
+  ansible.builtin.apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+  when: docker_check.changed
+
+- name: Add Docker APT Repository
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_facts['distribution_release'] }} stable
+    state: present
+  when: docker_check.changed
+
+- name: Install Docker
+  become: true
+  ansible.builtin.apt:
+    pkg:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    update_cache: true
+  when: docker_check.changed
+
+- name: Create Docker Group
+  become: true
+  group:
+    name: docker
+    state: present
+
+- name: Add user to docker group
+  become: true
+  user:
+    name: jaci
+    groups: docker
+    append: yes
+

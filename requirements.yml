@@ -1,0 +1,9 @@
+---
+roles:
+- gantsign.default-web-browser
+- rvm.ruby
+- geerlingguy.nodejs
+- y-yu.texlive
+
+collections:
+- community.general
